@@ -1,5 +1,9 @@
 # Physical AI Imitation Learning excercise
 
+## Features
+- rosbag2lerobot: Dataset conversion from rosbag2 to LeRobotDataset v2.1 format
+- training: Imitation Learning using LeRobot
+
 ## Installation
 Clone the repo
 ```bash
@@ -14,4 +18,63 @@ source ~/.bashrc
 ```
 ```bash
 pixi install
+```
+
+## Usage
+Convert rosbag2 to LeRobotDataset v2.1 format
+```bash
+pixi run convert
+```
+Visualize the dataset
+```bash
+pixi run python scripts/visualize_dataset.py --root /home/ubuntu/dataset/lerobot_dataset/crane_plus_pekori --repo-id crane_plus_pekori --episode-index 1 --mode distant
+# Copy the output from above command and paste it in your *local* web browser (it may take a second to load)
+```
+Train the policy
+```bash
+pixi run wandb login # login to wandb, access https://wandb.ai/authorize to get your API key
+# Invoke training with the config in [configs/train_config.yaml](configs/train_config.yaml)
+pixi run train
+```
+```bash
+pixi run infer
+```
+
+## Pixi help
+Visit [pixi](https://pixi.sh/latest/) for more details.
+
+### Environment Management
+```bash
+# Cleanup environment
+pixi clean
+
+# Add dependencies
+pixi list  # show all installed packages
+
+# Package Management
+# PyPI (pip) packages
+pixi add --pypi package  # install
+pixi remove --pypi package  # uninstall
+
+# conda packages
+pixi add package  # install
+pixi remove package  # uninstall
+
+# Activate environment
+pixi shell  # enter pixi's virtual environment shell (like source env/bin/activate in venv)
+# or
+pixi run "..."  # run command in default shell
+```
+
+### Task Management
+Tasks can be defined in `pyproject.toml` under `[tool.pixi.tasks]`:
+```toml
+[tool.pixi.tasks]
+my-task = "python my_script.py"  # simple command
+```
+
+You can then run these tasks using:
+```bash
+pixi run my-task  #= pixi shell & python my_script.py
+pixi run python my_script.py  # run a command in the pixi environment
 ```
