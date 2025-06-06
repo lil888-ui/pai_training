@@ -4221,7 +4221,7 @@ packages:
 - pypi: ./
   name: pai-training
   version: 0.1.0
-  sha256: 10b5a3f55318db5b3cac3ad826d3b8e7873e3e67b2fd12cec374ead868484e8f
+  sha256: cfbe352a43f4e7c8b57ac69109d3eff2c8f8af174d1be7254b4133d63c6f55de
   requires_python: '>=3.10'
   editable: true
 - pypi: https://files.pythonhosted.org/packages/44/50/7db2cd5e6373ae796f0ddad3675268c8d59fb6076e66f0c339d61cea886b/pandas-2.2.3-cp310-cp310-manylinux_2_17_x86_64.manylinux2014_x86_64.whl

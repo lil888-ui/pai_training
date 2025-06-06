@@ -27,6 +27,10 @@ lerobot = { path = "lerobot", editable = true, extras = ["pi0", "test", "pusht"]
 draccus = "==0.10.0"
 pymunk = "==6.6.0"
 
+[tool.pixi.activation.env]
+LD_LIBRARY_PATH = "$CONDA_PREFIX/lib:$LD_LIBRARY_PATH"
+PYTHONNOUSERSITE = "1"
+
 [tool.pixi.tasks]
 convert = { cmd = "python scripts/rosbag2lerobot.py" }
 train = { cmd = "python scripts/train.py" }
