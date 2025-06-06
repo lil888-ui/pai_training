@@ -23,7 +23,7 @@ class InferenceNode(Node):
         self.device = torch.device('cpu')
         self.policy.to(self.device)
         self.last_action = np.zeros(5, dtype=np.float32)
-        self.timer = self.create_timer(0.05, self.publish_action)  # 10Hz
+        self.timer = self.create_timer(0.05, self.publish_action)  # 20Hz
         self.latest_joint_state = None
 
     def joint_state_callback(self, msg):
