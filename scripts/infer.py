@@ -23,7 +23,7 @@ class InferenceNode(Node):
         self.device = torch.device('cpu')
         self.policy.to(self.device)
         self.last_action = np.zeros(5, dtype=np.float32)
-        self.timer = self.create_timer(0.1, self.publish_action)  # 10Hz
+        self.timer = self.create_timer(0.05, self.publish_action)  # 10Hz
         self.latest_joint_state = None
 
     def joint_state_callback(self, msg):
@@ -61,8 +61,7 @@ class InferenceNode(Node):
         pt_g.time_from_start.nanosec = int(0.1 * 1e9)
         jt_g.points.append(pt_g)
         self.gripper_pub.publish(jt_g)
-        print("action:", action)
-        print("gripper value:", action[4], type(action[4]))
+        print("action:", action[:4], "gripper:", action[4])
 
 def main():
     parser = argparse.ArgumentParser(description='ACTPolicy inference node for CRANE+ V2 (ROS2)')
