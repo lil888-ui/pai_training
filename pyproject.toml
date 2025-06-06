@@ -34,6 +34,6 @@ PYTHONNOUSERSITE = "1"
 [tool.pixi.tasks]
 convert = { cmd = "python scripts/rosbag2lerobot.py" }
 train = { cmd = "python scripts/train.py" }
-debug-policy = { cmd = "python -m scripts/debug_policy.py" }
+debug-policy = { cmd = "python scripts/debug_policy.py" }
 infer = { cmd = "python scripts/infer.py" }
 

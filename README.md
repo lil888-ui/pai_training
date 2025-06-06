@@ -36,8 +36,17 @@ pixi run wandb login # login to wandb, access https://wandb.ai/authorize to get 
 # Invoke training with the config in [configs/train_config.yaml](configs/train_config.yaml)
 pixi run train
 ```
+Run inference.  
+It takes the model path as an argument.
 ```bash
-pixi run infer
+pixi run infer --model-path /home/ubuntu/checkpoints/train/crane_plus_pekori_act
+```
+Debug policy.  
+This script evaluates the policy on the specified dataset offline.  
+This is useful to check if the policy is working as expected.  
+You can separate the dataset into training and evaluation sets to evaluate the policy in more detail.
+```bash
+pixi run debug-policy --dataset-root /home/ubuntu/dataset/lerobot_dataset/crane_plus_pekori --repo-id crane_plus_pekori --policy-path /home/ubuntu/checkpoints/train/crane_plus_pekori_act --episode-index 1
 ```
 
 ## Pixi help
