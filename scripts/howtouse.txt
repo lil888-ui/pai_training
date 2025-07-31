@@ -1,0 +1,8 @@
+ros2 launch crane_plus_gazebo bringup.launch.py
+python replay_infer.py \
+  --dataset-root /home/ubuntu/dataset/rosbags/lerobot_pick_and_place \
+  --repo-id crane_plus_pekori \
+  --episode-index 0 \
+  --policy-path /root/pai_ws/src/checkpoints/train/pick_and_place_act_21:37 \
+  --device cuda \
+  --rate 50

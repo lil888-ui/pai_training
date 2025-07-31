@@ -91,7 +91,8 @@ def main():
     input_features = {key: ft for key, ft in features.items() if key not in output_features}
     print(f"input_features: {input_features}")
     print(f"output_features: {output_features}")
-
+    for idx, key in enumerate(output_features.keys()):
+        print(f"Action index {idx}: {key}")
     cfg = ACTConfig(
         input_features=input_features,
         output_features=output_features,
@@ -125,6 +126,7 @@ def main():
             batch["observation.environment_state"] = batch["observation.environment_state"][:, -1, :]  # (B, D)
             # action is left as is
             loss, _ = policy.forward(batch)
+            #print(f"Loss: {loss.item()}, Info: {info}")
             loss.backward()
             optimizer.step()
             optimizer.zero_grad()

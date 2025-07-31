@@ -1,4 +1,6 @@
-bag_dir: "/home/ubuntu/dataset/rosbags/pekori"
-output_dir: "/home/ubuntu/dataset/lerobot_dataset/crane_plus_pekori"
+bag_dir: "/home/ubuntu/dataset/rosbags/pick_and_place"
+#output_dir: "/home/ubuntu/dataset/rosbags/lerobot_pick_and_place"
+output_dir: "/home/ubuntu/dataset/rosbags/lerobot_pick_and_place_50Hz"
 config: "configs/crane_features.py"
-target_freq: 20
+#target_freq: 20
+target_freq: 50

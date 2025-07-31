@@ -1,0 +1,80 @@
+root@942009639dcf:~/pai_training# pixi run infer --model-path /root/pai_ws/src/checkpoints/train/pick_and_place_act_21:37
+Pixi task (infer): python scripts/infer.py --model-path /root/pai_ws/src/checkpoints/train/pick_and_place_act_21:37
+Loading weights from local directory
+Traceback (most recent call last):
+  File "/home/ubuntu/pai_training/scripts/infer.py", line 127, in <module>
+    main()
+  File "/home/ubuntu/pai_training/scripts/infer.py", line 119, in main
+    rclpy.spin(node)
+  File "/opt/ros/humble/local/lib/python3.10/dist-packages/rclpy/__init__.py", line 229, in spin
+    executor.spin_once()
+  File "/opt/ros/humble/local/lib/python3.10/dist-packages/rclpy/executors.py", line 751, in spin_once
+    self._spin_once_impl(timeout_sec)
+  File "/opt/ros/humble/local/lib/python3.10/dist-packages/rclpy/executors.py", line 748, in _spin_once_impl
+    raise handler.exception()
+  File "/opt/ros/humble/local/lib/python3.10/dist-packages/rclpy/task.py", line 254, in __call__
+    self._handler.send(None)
+  File "/opt/ros/humble/local/lib/python3.10/dist-packages/rclpy/executors.py", line 447, in handler
+    await call_coroutine(entity, arg)
+  File "/opt/ros/humble/local/lib/python3.10/dist-packages/rclpy/executors.py", line 361, in _execute_timer
+    await await_or_execute(tmr.callback)
+  File "/opt/ros/humble/local/lib/python3.10/dist-packages/rclpy/executors.py", line 107, in await_or_execute
+    return callback(*args)
+  File "/home/ubuntu/pai_training/scripts/infer.py", line 78, in publish_action
+    action = self.policy.select_action(obs).cpu().numpy().flatten()  # (5,)
+  File "/home/ubuntu/pai_training/.pixi/envs/default/lib/python3.10/site-packages/torch/utils/_contextlib.py", line 116, in decorate_context
+    return func(*args, **kwargs)
+  File "/home/ubuntu/pai_training/lerobot/lerobot/common/policies/act/modeling_act.py", line 135, in select_action
+    actions = self.model(batch)[0][:, : self.config.n_action_steps]
+  File "/home/ubuntu/pai_training/.pixi/envs/default/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1751, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+  File "/home/ubuntu/pai_training/.pixi/envs/default/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1762, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "/home/ubuntu/pai_training/lerobot/lerobot/common/policies/act/modeling_act.py", line 512, in forward
+    encoder_in_tokens = torch.stack(encoder_in_tokens, axis=0)
+RuntimeError: stack expects each tensor to be equal size, but got [1, 512] at entry 0 and [1, 16, 512] at entry 1
+root@942009639dcf:~/pai_training#
+
+
+
+
+
+
+
+root@942009639dcf:~/pai_training# pixi run infer --model-path /root/pai_ws/src/checkpoints/train/pick_and_place_act_21:37
+Pixi task (infer): python scripts/infer.py --model-path /root/pai_ws/src/checkpoints/train/pick_and_place_act_21:37
+Loading weights from local directory
+Traceback (most recent call last):
+  File "/home/ubuntu/pai_training/scripts/infer.py", line 129, in <module>
+    main()
+  File "/home/ubuntu/pai_training/scripts/infer.py", line 121, in main
+    rclpy.spin(node)
+  File "/opt/ros/humble/local/lib/python3.10/dist-packages/rclpy/__init__.py", line 229, in spin
+    executor.spin_once()
+  File "/opt/ros/humble/local/lib/python3.10/dist-packages/rclpy/executors.py", line 751, in spin_once
+    self._spin_once_impl(timeout_sec)
+  File "/opt/ros/humble/local/lib/python3.10/dist-packages/rclpy/executors.py", line 748, in _spin_once_impl
+    raise handler.exception()
+  File "/opt/ros/humble/local/lib/python3.10/dist-packages/rclpy/task.py", line 254, in __call__
+    self._handler.send(None)
+  File "/opt/ros/humble/local/lib/python3.10/dist-packages/rclpy/executors.py", line 447, in handler
+    await call_coroutine(entity, arg)
+  File "/opt/ros/humble/local/lib/python3.10/dist-packages/rclpy/executors.py", line 361, in _execute_timer
+    await await_or_execute(tmr.callback)
+  File "/opt/ros/humble/local/lib/python3.10/dist-packages/rclpy/executors.py", line 107, in await_or_execute
+    return callback(*args)
+  File "/home/ubuntu/pai_training/scripts/infer.py", line 80, in publish_action
+    action = self.policy.select_action(obs).cpu().numpy().flatten()  # (5,)
+  File "/home/ubuntu/pai_training/.pixi/envs/default/lib/python3.10/site-packages/torch/utils/_contextlib.py", line 116, in decorate_context
+    return func(*args, **kwargs)
+  File "/home/ubuntu/pai_training/lerobot/lerobot/common/policies/act/modeling_act.py", line 119, in select_action
+    batch = self.normalize_inputs(batch)
+  File "/home/ubuntu/pai_training/.pixi/envs/default/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1751, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+  File "/home/ubuntu/pai_training/.pixi/envs/default/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1762, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "/home/ubuntu/pai_training/.pixi/envs/default/lib/python3.10/site-packages/torch/utils/_contextlib.py", line 116, in decorate_context
+    return func(*args, **kwargs)
+  File "/home/ubuntu/pai_training/lerobot/lerobot/common/policies/normalize.py", line 171, in forward
+    batch[key] = (batch[key] - mean) / (std + 1e-8)
+RuntimeError: The size of tensor a (80) must match the size of tensor b (5) at non-singleton dimension 1
